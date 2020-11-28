@@ -2547,28 +2547,31 @@ def report_counts(counts, name):
 class MyClass(GeneratedClass):
     def __init__(self):
         GeneratedClass.__init__(self)
-        problem = A((1, 1, 1, 1, 1, 1, 1, 1, 0, 2800))
-        # print("exp = {}".format(problem.exp))
-        solution = breadth_first_graph_search(problem)
-        # print("eye = {}".format(problem.eye))
-        path = path_actions(solution)
-        n_pauses = path.count("pause")
-        n_moves = len(path) - n_pauses
-        path = list(filter(lambda x: x != "pause", path))
-        new_path = []
-        if n_pauses % n_moves != 0:
-            mod = n_pauses % n_moves
-        else:
-            mod = 0
-        for i in range(n_moves+1):
-            new_path.extend(["pause"] * ((n_pauses // n_moves) + mod))
-            if i != (n_moves):
-                new_path.append(path.pop())
-            mod = 0
-        self.logger.info(new_path)
-        cost = solution.path_cost
-        self.logger.info('cost = {}'.format(cost))
-        self.path = new_path
+        MANDATORY_TIME = [3700,800,1000]
+        MANDATORY_POS = ["prova1","prova2","stand"]
+        self.path = []
+        for time, pos in zip(MANDATORY_TIME, MANDATORY_POS):
+            problem = A((1, 1, 1, 1, 1, 1, 1, 1, 0, time))
+            solution = breadth_first_graph_search(problem)
+            path = path_actions(solution)
+            n_pauses = path.count("pause")
+            n_moves = len(path) - n_pauses
+            path = list(filter(lambda x: x != "pause", path))
+            new_path = []
+            if n_pauses % n_moves != 0:
+                mod = n_pauses % n_moves
+            else:
+                mod = 0
+            for i in range(n_moves+1):
+                new_path.extend(["pause"] * ((n_pauses // n_moves) + mod))
+                if i != (n_moves):
+                    new_path.append(path.pop())
+                mod = 0
+            self.logger.info(new_path)
+            cost = solution.path_cost
+            self.logger.info('cost = {}'.format(cost))
+            self.path.extend(new_path)
+            self.path.append(pos)
 
     def onLoad(self):
         #put initialization code here
@@ -2599,6 +2602,10 @@ class MyClass(GeneratedClass):
                 mvm.hide()
             if move == 'exp':
                 mvm.exp()
+            if move == 'prova1' or move == 'prova2':
+                pass
+            if move == 'stand':
+                pass
 
 
     def onInput_onStop(self):
