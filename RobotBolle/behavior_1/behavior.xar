@@ -2399,7 +2399,7 @@ def h(node):
 
 
 EYE, SNAP, STAR, WAVE, EXP, HIDE, YMCA, FIST, PAUSE = range(9)
-TIMES = [500, 800, 360, 700, 408, 500, 936, 800, 1]
+TIMES = [500, 656, 360, 680, 408, 500, 916, 556, 1]
 
 class A(Problem):
     def value(self, state):
@@ -2477,7 +2477,7 @@ class A(Problem):
               <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
               <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
             </Box>
-            <Box name="main" id="4" localization="8" tooltip="" x="386" y="172">
+            <Box name="main" id="4" localization="8" tooltip="" x="415" y="224">
               <bitmap>media/images/box/box-python-script.png</bitmap>
               <script language="4">
                 <content>
@@ -2547,8 +2547,8 @@ def report_counts(counts, name):
 class MyClass(GeneratedClass):
     def __init__(self):
         GeneratedClass.__init__(self)
-        MANDATORY_TIME = [3700,800,1000]
-        MANDATORY_POS = ["prova1","prova2","stand"]
+        MANDATORY_TIME = [2800,600]
+        MANDATORY_POS = ["technologic","prova2"]
         self.path = []
         for time, pos in zip(MANDATORY_TIME, MANDATORY_POS):
             problem = A((1, 1, 1, 1, 1, 1, 1, 1, 0, time))
@@ -2582,8 +2582,11 @@ class MyClass(GeneratedClass):
         pass
 
     def onInput_onStart(self):
+        mvm = Moves()
+        mvm.sit()
+        time.sleep(6)
         for move in self.path:
-            mvm = Moves()
+
             if move == "pause":
                 time.sleep(0.01)
             if move == "fist":
@@ -2597,15 +2600,17 @@ class MyClass(GeneratedClass):
             if move == 'snap':
                 mvm.snap()
             if move == 'eye':
-                pass
+                mvm.hide()
             if move == 'hide':
                 mvm.hide()
             if move == 'exp':
                 mvm.exp()
-            if move == 'prova1' or move == 'prova2':
+            if move == 'technologic':
+                mvm.technologic()
+            if move == 'prova2':
                 pass
-            if move == 'stand':
-                pass
+            if move == 'sit':
+                mvm.sit()
 
 
     def onInput_onStop(self):
@@ -2630,7 +2635,7 @@ class MyClass(GeneratedClass):
               <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
               <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
             </Box>
-            <Box name="moves" id="6" localization="8" tooltip="" x="75" y="383">
+            <Box name="moves" id="6" localization="8" tooltip="" x="64" y="381">
               <bitmap>media/images/box/box-python-script.png</bitmap>
               <script language="4">
                 <content>
@@ -3597,6 +3602,262 @@ class MyClass(GeneratedClass):
           motion = ALProxy("ALMotion")
           motion.angleInterpolationBezier(names, times, keys)
         except BaseException, err:
+          print err
+
+          ##################################################################################################################################################################################################################################
+
+    def clack(self):
+        names = list()
+        times = list()
+        keys = list()
+
+        names.append("HeadPitch")
+        times.append([0.52, 0.84])
+        keys.append([[-0.174171, [3, -0.186667, 0], [3, 0.106667, 0]], [-0.174171, [3, -0.106667, 0], [3, 0, 0]]])
+
+        names.append("HeadYaw")
+        times.append([0.52, 0.84])
+        keys.append([[-0.00695748, [3, -0.186667, 0], [3, 0.106667, 0]], [-0.00695748, [3, -0.106667, 0], [3, 0, 0]]])
+
+        names.append("LAnklePitch")
+        times.append([0.52, 0.84])
+        keys.append([[0.0914655, [3, -0.186667, 0], [3, 0.106667, 0]], [0.0914655, [3, -0.106667, 0], [3, 0, 0]]])
+
+        names.append("LAnkleRoll")
+        times.append([0.52, 0.84])
+        keys.append([[-0.101369, [3, -0.186667, 0], [3, 0.106667, 0]], [-0.101369, [3, -0.106667, 0], [3, 0, 0]]])
+
+        names.append("LElbowRoll")
+        times.append([0.52, 0.84])
+        keys.append([[-0.422946, [3, -0.186667, 0], [3, 0.106667, 0]], [-0.422946, [3, -0.106667, 0], [3, 0, 0]]])
+
+        names.append("LElbowYaw")
+        times.append([0.52, 0.84])
+        keys.append([[-1.20298, [3, -0.186667, 0], [3, 0.106667, 0]], [-1.20298, [3, -0.106667, 0], [3, 0, 0]]])
+
+        names.append("LHand")
+        times.append([0.52, 0.84])
+        keys.append([[0.301882, [3, -0.186667, 0], [3, 0.106667, 0]], [0.301882, [3, -0.106667, 0], [3, 0, 0]]])
+
+        names.append("LHipPitch")
+        times.append([0.52, 0.84])
+        keys.append([[0.127493, [3, -0.186667, 0], [3, 0.106667, 0]], [0.127493, [3, -0.106667, 0], [3, 0, 0]]])
+
+        names.append("LHipRoll")
+        times.append([0.52, 0.84])
+        keys.append([[0.118347, [3, -0.186667, 0], [3, 0.106667, 0]], [0.118347, [3, -0.106667, 0], [3, 0, 0]]])
+
+        names.append("LHipYawPitch")
+        times.append([0.52, 0.84])
+        keys.append([[-0.174671, [3, -0.186667, 0], [3, 0.106667, 0]], [-0.174671, [3, -0.106667, 0], [3, 0, 0]]])
+
+        names.append("LKneePitch")
+        times.append([0.52, 0.84])
+        keys.append([[-0.0853155, [3, -0.186667, 0], [3, 0.106667, 0]], [-0.0853155, [3, -0.106667, 0], [3, 0, 0]]])
+
+        names.append("LShoulderPitch")
+        times.append([0.52, 0.84])
+        keys.append([[1.43688, [3, -0.186667, 0], [3, 0.106667, 0]], [1.43688, [3, -0.106667, 0], [3, 0, 0]]])
+
+        names.append("LShoulderRoll")
+        times.append([0.52, 0.84])
+        keys.append([[0.223158, [3, -0.186667, 0], [3, 0.106667, 0]], [0.223158, [3, -0.106667, 0], [3, 0, 0]]])
+
+        names.append("LWristYaw")
+        times.append([0.52, 0.84])
+        keys.append([[0.0984751, [3, -0.186667, 0], [3, 0.106667, 0]], [0.0984751, [3, -0.106667, 0], [3, 0, 0]]])
+
+        names.append("RAnklePitch")
+        times.append([0.52, 0.84])
+        keys.append([[0.0882887, [3, -0.186667, 0], [3, 0.106667, 0]], [0.0882887, [3, -0.106667, 0], [3, 0, 0]]])
+
+        names.append("RAnkleRoll")
+        times.append([0.52, 0.84])
+        keys.append([[0.113558, [3, -0.186667, 0], [3, 0.106667, 0]], [0.113558, [3, -0.106667, 0], [3, 0, 0]]])
+
+        names.append("RElbowRoll")
+        times.append([0.52, 0.84])
+        keys.append([[1.54266, [3, -0.186667, 0], [3, 0.106667, 0]], [1.54266, [3, -0.106667, 0], [3, 0, 0]]])
+
+        names.append("RElbowYaw")
+        times.append([0.52, 0.84])
+        keys.append([[2.08038, [3, -0.186667, 0], [3, 0.106667, 0]], [2.08038, [3, -0.106667, 0], [3, 0, 0]]])
+
+        names.append("RHand")
+        times.append([0.36, 0.52, 0.68, 0.84])
+        keys.append([[0.56, [3, -0.133333, 0], [3, 0.0533333, 0]], [0.2, [3, -0.0533333, 0], [3, 0.0533333, 0]], [0.56, [3, -0.0533333, 0], [3, 0.0533333, 0]], [0.2, [3, -0.0533333, 0], [3, 0, 0]]])
+
+        names.append("RHipPitch")
+        times.append([0.52, 0.84])
+        keys.append([[0.128033, [3, -0.186667, 0], [3, 0.106667, 0]], [0.128033, [3, -0.106667, 0], [3, 0, 0]]])
+
+        names.append("RHipRoll")
+        times.append([0.52, 0.84])
+        keys.append([[-0.116214, [3, -0.186667, 0], [3, 0.106667, 0]], [-0.116214, [3, -0.106667, 0], [3, 0, 0]]])
+
+        names.append("RHipYawPitch")
+        times.append([0.52, 0.84])
+        keys.append([[-0.174671, [3, -0.186667, 0], [3, 0.106667, 0]], [-0.174671, [3, -0.106667, 0], [3, 0, 0]]])
+
+        names.append("RKneePitch")
+        times.append([0.52, 0.84])
+        keys.append([[-0.0826476, [3, -0.186667, 0], [3, 0.106667, 0]], [-0.0826476, [3, -0.106667, 0], [3, 0, 0]]])
+
+        names.append("RShoulderPitch")
+        times.append([0.52, 0.84])
+        keys.append([[1.46879, [3, -0.186667, 0], [3, 0.106667, 0]], [1.46879, [3, -0.106667, 0], [3, 0, 0]]])
+
+        names.append("RShoulderRoll")
+        times.append([0.52, 0.84])
+        keys.append([[-0.0951325, [3, -0.186667, 0], [3, 0.106667, 0]], [-0.0951325, [3, -0.106667, 0], [3, 0, 0]]])
+
+        names.append("RWristYaw")
+        times.append([0.52, 0.84])
+        keys.append([[0.748296, [3, -0.186667, 0], [3, 0.106667, 0]], [0.748296, [3, -0.106667, 0], [3, 0, 0]]])
+
+        try:
+          # uncomment the following line and modify the IP if you use this script outside Choregraphe.
+          # motion = ALProxy("ALMotion", IP, 9559)
+          motion = ALProxy("ALMotion")
+          motion.angleInterpolationBezier(names, times, keys)
+        except BaseException, err:
+          print err
+
+    def technologic(self):
+            ttsProxy = ALProxy("ALTextToSpeech")
+
+            self.clack()
+            time.sleep(0.4)
+            ttsProxy.say("Technologic")
+            time.sleep(0.4)
+            self.clack()
+            time.sleep(0.4)
+            ttsProxy.say("Technologic")
+            time.sleep(0.4)
+            self.clack()
+            time.sleep(0.4)
+            ttsProxy.say("Technologic")
+            time.sleep(0.4)
+            self.clack()
+            time.sleep(0.4)
+            ttsProxy.say("Technologic")
+###################################################################################################################################################################################################################################################################
+
+    def sit(self):
+        names = list()
+        times = list()
+        keys = list()
+
+        names.append("HeadPitch")
+        times.append([0.96])
+        keys.append([[-0.0367564, [3, -0.333333, 0], [3, 0, 0]]])
+
+        names.append("HeadYaw")
+        times.append([0.96])
+        keys.append([[-0.0400697, [3, -0.333333, 0], [3, 0, 0]]])
+
+        names.append("LAnklePitch")
+        times.append([0.96])
+        keys.append([[0.835988, [3, -0.333333, 0], [3, 0, 0]]])
+
+        names.append("LAnkleRoll")
+        times.append([0.96])
+        keys.append([[-0.0173474, [3, -0.333333, 0], [3, 0, 0]]])
+
+        names.append("LElbowRoll")
+        times.append([0.96])
+        keys.append([[-1.20972, [3, -0.333333, 0], [3, 0, 0]]])
+
+        names.append("LElbowYaw")
+        times.append([0.96])
+        keys.append([[-0.449659, [3, -0.333333, 0], [3, 0, 0]]])
+
+        names.append("LHand")
+        times.append([0.96])
+        keys.append([[0.295692, [3, -0.333333, 0], [3, 0, 0]]])
+
+        names.append("LHipPitch")
+        times.append([0.96])
+        keys.append([[-1.53247, [3, -0.333333, 0], [3, 0, 0]]])
+
+        names.append("LHipRoll")
+        times.append([0.96])
+        keys.append([[0.269735, [3, -0.333333, 0], [3, 0, 0]]])
+
+        names.append("LHipYawPitch")
+        times.append([0.96])
+        keys.append([[-0.619608, [3, -0.333333, 0], [3, 0, 0]]])
+
+        names.append("LKneePitch")
+        times.append([0.96])
+        keys.append([[1.39157, [3, -0.333333, 0], [3, 0, 0]]])
+
+        names.append("LShoulderPitch")
+        times.append([0.96])
+        keys.append([[0.833979, [3, -0.333333, 0], [3, 0, 0]]])
+
+        names.append("LShoulderRoll")
+        times.append([0.96])
+        keys.append([[0.267669, [3, -0.333333, 0], [3, 0, 0]]])
+
+        names.append("LWristYaw")
+        times.append([0.96])
+        keys.append([[0.0317215, [3, -0.333333, 0], [3, 0, 0]]])
+
+        names.append("RAnklePitch")
+        times.append([0.96])
+        keys.append([[0.849878, [3, -0.333333, 0], [3, 0, 0]]])
+
+        names.append("RAnkleRoll")
+        times.append([0.96])
+        keys.append([[0.0260041, [3, -0.333333, 0], [3, 0, 0]]])
+
+        names.append("RElbowRoll")
+        times.append([0.96])
+        keys.append([[1.26105, [3, -0.333333, 0], [3, 0, 0]]])
+
+        names.append("RElbowYaw")
+        times.append([0.96])
+        keys.append([[0.516621, [3, -0.333333, 0], [3, 0, 0]]])
+
+        names.append("RHand")
+        times.append([0.96])
+        keys.append([[0.299793, [3, -0.333333, 0], [3, 0, 0]]])
+
+        names.append("RHipPitch")
+        times.append([0.96])
+        keys.append([[-1.53534, [3, -0.333333, 0], [3, 0, 0]]])
+
+        names.append("RHipRoll")
+        times.append([0.96])
+        keys.append([[-0.26058, [3, -0.333333, 0], [3, 0, 0]]])
+
+        names.append("RHipYawPitch")
+        times.append([0.96])
+        keys.append([[-0.619608, [3, -0.333333, 0], [3, 0, 0]]])
+
+        names.append("RKneePitch")
+        times.append([0.96])
+        keys.append([[1.4013, [3, -0.333333, 0], [3, 0, 0]]])
+
+        names.append("RShoulderPitch")
+        times.append([0.96])
+        keys.append([[0.889028, [3, -0.333333, 0], [3, 0, 0]]])
+
+        names.append("RShoulderRoll")
+        times.append([0.96])
+        keys.append([[-0.310889, [3, -0.333333, 0], [3, 0, 0]]])
+
+        names.append("RWristYaw")
+        times.append([0.96])
+        keys.append([[-0.0265908, [3, -0.333333, 0], [3, 0, 0]]])
+
+        try:
+          # uncomment the following line and modify the IP if you use this script outside Choregraphe.
+          # motion = ALProxy("ALMotion", IP, 9559)
+          motion = ALProxy("ALMotion")
+          motion.angleInterpolationBezier(names, times, keys)
+        except BaseException, err:
           print err]]>
                 </content>
               </script>
@@ -3605,7 +3866,7 @@ class MyClass(GeneratedClass):
               <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
               <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
             </Box>
-            <Box name="Play Sound" id="7" localization="8" tooltip="Play a sound file. Select the file in parameters. The format of the file can be wav or ogg (on virtual robot) and also mp3 (on a real robot).&#x0A;&#x0A;Note: There can be some delay to play ogg or mp3 (on a robot) files. We advise you to use wav if&#x0A;you want a fast play of the file." x="422" y="334">
+            <Box name="Play Sound" id="7" localization="8" tooltip="Play a sound file. Select the file in parameters. The format of the file can be wav or ogg (on virtual robot) and also mp3 (on a real robot).&#x0A;&#x0A;Note: There can be some delay to play ogg or mp3 (on a robot) files. We advise you to use wav if&#x0A;you want a fast play of the file." x="411" y="383">
               <bitmap>media/images/box/interaction/play_music.png</bitmap>
               <script language="4">
                 <content>
@@ -3726,8 +3987,9 @@ class MyClass(GeneratedClass):
               </Timeline>
               <Resource name="Audio player" type="Lock" timeout="0" />
             </Box>
-            <Link inputowner="7" indexofinput="2" outputowner="0" indexofoutput="2" />
+            <Link inputowner="0" indexofinput="4" outputowner="4" indexofoutput="4" />
             <Link inputowner="4" indexofinput="2" outputowner="0" indexofoutput="2" />
+            <Link inputowner="7" indexofinput="2" outputowner="0" indexofoutput="2" />
           </Diagram>
         </BehaviorKeyframe>
       </BehaviorLayer>
