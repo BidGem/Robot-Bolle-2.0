@@ -2546,9 +2546,10 @@ class MyClass(GeneratedClass):
         GeneratedClass.__init__(self)
         MANDATORY_TIME = [3750, 800, 1000, 1200, 1400, 1600]
         MANDATORY_POS = ["technologic", "stand", "standZero", "sit", "sitRelax", "crouch"]
+        MANDATORY_DURATION = [0,0,0,0,0,0] #First must be 0, the other ones must be the duration in cs of the precedent mandatory
         self.path = []
-        for time, pos in zip(MANDATORY_TIME, MANDATORY_POS):
-            problem = A((1, 1, 1, 1, 1, 1, 1, 0, time))
+        for time, pos, dur in zip(MANDATORY_TIME, MANDATORY_POS, MANDATORY_DURATION):
+            problem = A((1, 1, 1, 1, 1, 1, 1, dur, time))
             solution = breadth_first_graph_search(problem)
             path = path_actions(solution)
             n_pauses = path.count("pause")
