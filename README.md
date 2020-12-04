@@ -3,7 +3,7 @@ A Choreograph project to make dance a virtual NAO, created for the NAO Competiti
 
 The Robot use a breadth-first graph search to choose mooves to best fit the duration of the dance. Eventual pauses are evenly distributed over the entire dance.
 
-Check Robot Bolle on TikTok: https://www.tiktok.com/@robotbolle?lang=it
+Check Robot Bolle on TikTok: https://www.tiktok.com/@robotbolle
 
 ## Requirements
 Too run the code you need Choreograph and the following Python modules (probably most of these are already installed):
