@@ -6,7 +6,7 @@ The Robot use a breadth-first graph search to choose mooves to best fit the dura
 Check Robot Bolle on TikTok: https://www.tiktok.com/@robotbolle
 
 ## Requirements
-Too run the code you need Choreograph and the following Python modules (probably most of these are already installed):
+To run the code you need Choreograph and the following Python modules (probably most of these are already installed):
 - bisect
 - collections
 - abc
