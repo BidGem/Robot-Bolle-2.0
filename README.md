@@ -20,6 +20,7 @@ Too run the code you need Choreograph and the following Python modules (probably
 - collections
 - math
 - time
+
 They must be installed inside the Python directory of Choreograph, usually it is: 
 ```
 C:\Program Files (x86)\Softbank Robotics\Choregraphe Suite 2.8\lib\python2.7\Lib\site-packages
