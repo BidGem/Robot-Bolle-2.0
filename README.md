@@ -17,7 +17,6 @@ Too run the code you need Choreograph and the following Python modules (probably
 - random
 - itertools
 - sys
-- collections
 - math
 - time
 
