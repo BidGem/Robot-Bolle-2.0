@@ -4,3 +4,23 @@ A Choreograph project to make dance a virtual NAO, created for the NAO Competiti
 The Robot use a breadth-first graph search to choose mooves to best fit the duration of the dance. Eventual pauses are evenly distributed over the entire dance.
 
 Check Robot Bolle on TikTok: https://www.tiktok.com/@robotbolle?lang=it
+
+## Requirements
+Too run the code you need Choreograph and the following Python modules (probably most of these are already installed):
+- bisect
+- collections
+- abc
+- functools
+- heapq
+- operator
+- os.path
+- random
+- itertools
+- sys
+- collections
+- math
+- time
+They must be installed inside the Python directory of Choreograph, usually it is: 
+```
+C:\Program Files (x86)\Softbank Robotics\Choregraphe Suite 2.8\lib\python2.7\Lib\site-packages
+```
